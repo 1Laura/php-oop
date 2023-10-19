@@ -35,7 +35,12 @@
 		<!-- rows of vehicles -->
     <?php foreach ($vehicles as $vehicle) {
 
-      $price = number_format($vehicle->price,2);
+      $price = number_format($vehicle->price, 2);
+      $engineSpan = "";
+
+      if (property_exists($vehicle, "engine")) {
+        $engineSpan = "<span class='data-label'>Engine type: </span><span class='vehicle-engine'>$vehicle->engine</span> ";
+      }
 
       echo <<<FOREACHVEHICLE
             <tr>
@@ -46,9 +51,9 @@
                     <p class="vehicle-make">$vehicle->make</p>
                     <p class="vehicle-model">$vehicle->model</p>
                     <hr class="vehicle-hr">
-                    <p class="right-aligned"><span class="data-label">Year: </span><span class="vehicle-year">$vehicle->year</span>
+                    <p class="right-aligned">$engineSpan<span class="data-label">Year: </span><span class="vehicle-year">$vehicle->year</span>
                     &nbsp;&nbsp;<span class="data-label">Mileage: </span><span class="vehicle-mileage">$vehicle->mileage</span></p>
-                    <p class="vehicle-price right-aligned">$$price</p>
+                    <p class="vehicle-price right-aligned">$price</p>
 
                     <!-- form for payment calculation -->
 

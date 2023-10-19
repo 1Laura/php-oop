@@ -5,10 +5,19 @@
 //    ["Terraza", "Spinneo", "2020", 30000, 31000, "veh-02.jpg"],
 //    ["Sage", "Ecostar", "2014", 70000, 15000, "veh-03.jpg"]
 //  ];
-
-class Vehicle
+abstract class Vehicle
 {
-  public function __construct($make, $model, $year, $mileage, $price, $image)
+  var $make;
+  var $model;
+  var $year;
+  var $mileage;
+  var $price;
+  var $image;
+
+}
+class Car extends Vehicle
+{
+  function __construct($make, $model, $year, $mileage, $price, $image)
   {
     $this->make = $make;
     $this->model = $model;
@@ -18,17 +27,31 @@ class Vehicle
     $this->image = $image;
   }
 
-  var $make;
-  var $model;
-  var $year;
-  var $mileage;
-  var $price;
-  var $image;
+
 }
 
-$vehicle1 = new Vehicle("Astro", "Estrella", "2022", "500", "50000", "veh-01.jpg");
-$vehicle2 = new Vehicle("Terraza", "Spinneo", "2020", "30000", "31000", "veh-02.jpg");
-$vehicle3 = new Vehicle("Sage", "Ecostar", "2014", "70000", "15000", "veh-03.jpg");
+class Truck extends Vehicle
+{
+  function __construct($make, $model, $year, $mileage, $price, $image, $engine)
+  {
+    $this->make = $make;
+    $this->model = $model;
+    $this->year = $year;
+    $this->mileage = $mileage;
+    $this->price = $price;
+    $this->image = $image;
+    $this->engine = $engine;
+  }
+
+  var $engine;
+}
+
+
+$vehicle1 = new Car("Astro", "Estrella", "2022", "500", "50000", "veh-01.jpg");
+$vehicle2 = new Car("Terraza", "Spinneo", "2020", "30000", "31000", "veh-02.jpg");
+$vehicle3 = new Car("Sage", "Ecostar", "2014", "70000", "15000", "veh-03.jpg");
+$vehicle4 = new Truck("Hauler", "Lion", "2021", "200", "40000", "veh-04.jpg", "diesel");
+
 //$vehicle2->make = "Terraza";
 //$vehicle2->model = "Spinneo";
 //$vehicle2->year = "2020";
@@ -36,4 +59,4 @@ $vehicle3 = new Vehicle("Sage", "Ecostar", "2014", "70000", "15000", "veh-03.jpg
 //$vehicle2->price = "31000";
 //$vehicle2->image = "veh-02.jpg";
 
-$vehicle=[$vehicle1, $vehicle2, $vehicle3];
+$vehicles = [$vehicle1, $vehicle2, $vehicle3, $vehicle4];
