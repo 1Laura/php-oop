@@ -5,7 +5,14 @@
 //    ["Terraza", "Spinneo", "2020", 30000, 31000, "veh-02.jpg"],
 //    ["Sage", "Ecostar", "2014", 70000, 15000, "veh-03.jpg"]
 //  ];
-abstract class Vehicle
+
+interface FormattedAccess
+{
+  function getFormattedMileage();
+  function getFormattedPrice();
+}
+
+abstract class Vehicle implements FormattedAccess
 {
   var $make;
   var $model;
@@ -14,7 +21,19 @@ abstract class Vehicle
   var $price;
   var $image;
 
+  function getFormattedMileage()
+  {
+    // TODO: Implement getFormattedMileage() method.
+    return number_format($this->mileage,0);
+  }
+  function getFormattedPrice()
+  {
+    // TODO: Implement getFormattedMileage() method.
+    return number_format($this->price,2);
+  }
+
 }
+
 class Car extends Vehicle
 {
   function __construct($make, $model, $year, $mileage, $price, $image)
