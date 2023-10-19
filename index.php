@@ -20,7 +20,7 @@
 </head>
 <body>
 <?php include "objects.php" ?>
-
+<?php global $vehicles; ?>
 
 <div class='outer-div'>
 	<h1><?php echo "Hello World Autos" ?></h1>
@@ -35,7 +35,9 @@
 		<!-- rows of vehicles -->
     <?php foreach ($vehicles as $vehicle) {
       $mileage = $vehicle->getFormattedMileage();
-      $price =  $vehicle->getFormattedPrice();
+      $price = $vehicle->getFormattedPrice();
+      $options = $vehicle->getOptions();
+
       $engineSpan = "";
 
       if (property_exists($vehicle, "engine")) {
@@ -54,7 +56,7 @@
                     <p class="right-aligned">$engineSpan<span class="data-label">Year: </span><span class="vehicle-year">$vehicle->year</span>
                     &nbsp;&nbsp;<span class="data-label">Mileage: </span><span class="vehicle-mileage">$mileage</span></p>
                     <p class="vehicle-price right-aligned">$price</p>
-
+                    <p class="right-aligned vehicle-options">Options: $options</p>
                     <!-- form for payment calculation -->
 
                     <form action="payment-plan.php" method="post">

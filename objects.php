@@ -9,6 +9,7 @@
 interface FormattedAccess
 {
   function getFormattedMileage();
+
   function getFormattedPrice();
 }
 
@@ -24,12 +25,19 @@ abstract class Vehicle implements FormattedAccess
   function getFormattedMileage()
   {
     // TODO: Implement getFormattedMileage() method.
-    return number_format($this->mileage,0);
+    return number_format($this->mileage, 0);
   }
+
   function getFormattedPrice()
   {
     // TODO: Implement getFormattedMileage() method.
-    return number_format($this->price,2);
+    return number_format($this->price, 2);
+  }
+
+  function getOptions()
+  {
+    // TODO: Implement getFormattedMileage() method.
+    return ('No additional options');
   }
 
 }
@@ -63,6 +71,11 @@ class Truck extends Vehicle
   }
 
   var $engine;
+
+  function getOptions()
+  {
+    return ("Towing package available $1,000.00");
+  }
 }
 
 
